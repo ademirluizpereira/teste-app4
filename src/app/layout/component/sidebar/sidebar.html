@@ -1,0 +1,65 @@
+<aside class="mini-sidebar" [class.expanded]="expanded()" [attr.aria-expanded]="expanded()" aria-label="Main navigation">
+  <!-- Botão toggle -->
+  <button pButton type="button"(click)="toggle()" class="toggle" [ngClass]="{ rot: expanded() }" rounded
+    text [pTooltip]="expanded() ? 'Recolher' : 'Expandir'" icon="pi pi-angle-right">
+  </button>
+
+  <!-- Cabeçalho usuário -->
+  <div class="user" [class.compact]="isCollapsed()">
+    <p-avatar icon="pi pi-user" shape="circle" size="large"></p-avatar>
+    @if (showLabel()) {
+      <div class="meta">
+        <div class="name">{{ user.name }}</div>
+        <div class="email">{{ user.email }}</div>
+      </div>
+    }
+  </div>
+
+  <!-- Pesquisa -->
+  @if (showLabel()) {
+    <div class="search">
+      <span class="p-input-icon-right w-full">
+        <input pInputText type="text" [placeholder]="search.placeholder" class="w-full" />
+      </span>
+    </div>
+  } @else {
+    <div class="icons-only">
+      <button pButton text icon="pi pi-search" [pTooltip]="search.tooltip" ></button>
+    </div>
+  }
+
+  <!-- Seções / Menus -->
+  @for (section of sections; track section.title) {
+    @if (showLabel()) {
+      <div class="section-title">{{ section.title }}</div>
+      <p-panelMenu [model]="section.items" class="panelmenu-compact"></p-panelMenu>
+    } @else {
+      <!-- Colapsado: ícones e abre flyout -->
+      <div class="icons-only">
+        @for (btn of section.collapsedIcons; track btn.icon) {
+          <button pButton text [icon]="btn.icon" [pTooltip]="btn.tooltip" tooltipPosition="right">
+          </button>
+        }
+      </div>
+    }
+    <p-divider></p-divider>
+  }
+
+  <!-- Footer -->
+  <div class="footer">
+    <button pButton text icon="pi pi-question-circle" class="nav-btn no-hover"
+      [pTooltip]="isCollapsed() ? 'Help' : undefined" tooltipPosition="right">
+      @if (showLabel()) { <span>Help</span> }
+    </button>
+
+    <button pButton text severity="danger" icon="pi pi-sign-out" class="nav-btn no-hover"
+      [pTooltip]="isCollapsed() ? 'Logout' : undefined" tooltipPosition="right">
+      @if (showLabel()) { <span>Logout Account</span> }
+    </button>
+  </div>
+</aside>
+
+@if (expanded()) {
+  <div class="mini-sidebar-backdrop" (click)="toggle()" aria-hidden="true"></div>
+}
+ 

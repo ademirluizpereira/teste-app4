@@ -1,0 +1,77 @@
+<p-dialog [visible]="isVisible" (onHide)="close()" [style]="{ width: '450px' }" header="Adicionar Tipo de Máquina" [modal]="true">
+    <ng-template #content>
+        <div class="flex flex-col gap-6">
+            <div>
+                <label for="name" class="block font-bold mb-3">ID</label>
+                <input type="text" pInputText id="name" [(ngModel)]="selectedRow().code" required autofocus fluid />
+                
+                @if (submitted() && !selectedRow().code) {
+                    <small class="text-red-500">ID é obrigatório.</small>
+                }
+            </div>
+            <div>
+                <label for="name" class="block font-bold mb-3">Descrição</label>
+                <input type="text" pInputText id="description" [(ngModel)]="selectedRow().description" required autofocus fluid />
+                
+                @if (submitted() && !selectedRow().description) {
+                    <small class="text-red-500">Descrição é obrigatório.</small>
+                }
+            </div>
+            <div>
+                <label for="name" class="block font-bold mb-3">Sequência de Fluxo</label>
+                <input type="number" pInputText id="sequence" min="0" [(ngModel)]="selectedRow().flowSeq" required autofocus fluid />
+                
+                @if (submitted() && !selectedRow().flowSeq) {
+                    <small class="text-red-500">Sequência é obrigatório.</small>
+                }
+            </div>
+
+            <div class="grid grid-cols-3 gap-x-6 gap-y-4">
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch1">Capac.</label>
+                    <p-toggleSwitch id="switch1" [(ngModel)]="selectedRow().capacityFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch2">Corte</label>
+                    <p-toggleSwitch id="switch2" [(ngModel)]="selectedRow().cutterFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch3">Adicional</label>
+                    <p-toggleSwitch id="switch3" [(ngModel)]="selectedRow().additionalFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch4">Esp.Basica</label>
+                    <p-toggleSwitch id="switch4" [(ngModel)]="selectedRow().basicSpecFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch5">Produto</label>
+                    <p-toggleSwitch id="switch5" [(ngModel)]="selectedRow().productFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch6">Descrição</label>
+                    <p-toggleSwitch id="switch6" disabled [(ngModel)]="selectedRow().descriptionFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch7">Carreg.</label>
+                    <p-toggleSwitch id="switch7" [(ngModel)]="selectedRow().loadFlag"></p-toggleSwitch>
+                </div>
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch8">Custo</label>
+                    <p-toggleSwitch id="switch8" [(ngModel)]="selectedRow().costFlag"></p-toggleSwitch>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-x-6 gap-y-4">
+                <div class="flex flex-col items-start gap-1">
+                    <label for="switch8">Ativo</label>
+                    <p-toggleSwitch id="switch8" [(ngModel)]="selectedRow().isActive"></p-toggleSwitch>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #footer>
+        <p-button styleClass="btn-grey" label="Cancelar" text (click)="close()" severity="info" />
+        <p-button styleClass="btn-blue" label="Salvar" (click)="save()" severity="info" />
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,22 @@
+<p-toolbar class="mb-2 w-full">
+  <div class="text-[20px] font-semibold text-center ">
+{{ title() }}</div>
+
+  <ng-template pTemplate="end">
+    <p-button label="Adicionar" severity="info" styleClass="btn-blue mr-2" (onClick)="onAdd()" />
+
+    <p-button severity="danger" label="Excluir Selecionados" styleClass="btn-red" (onClick)="onDelete()"
+      [disabled]="disableDelete()" />
+
+    <div class="ml-2">
+      <p-iconfield>
+        <p-inputicon class="pi pi-search" />
+        <input pInputText type="text" (input)="onFilter($event)" placeholder="Pesquisar" />
+      </p-iconfield>
+    </div>
+
+    <div class="ml-3">
+      <p-iconfield class="pi pi-question-circle"></p-iconfield>
+    </div>
+  </ng-template>
+</p-toolbar>
