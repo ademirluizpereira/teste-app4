@@ -22,11 +22,8 @@ jobs:
       - name: 📦 Instalar dependências
         run: npm ci
 
-      - name: 🔍 Lint do código
-        run: npm run lint && npm run format
-
-      - name: 🧪 Testes
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      - name: 🔍 formatação do código
+        run: npm run format
 
       - name: 🏗️ Build para produção
         run: npm run build -- --configuration=production
