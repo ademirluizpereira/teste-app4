@@ -1,4 +1,4 @@
-name: Angular CI/CD
+name: CI/CD
 
 on:
   pull_request:
@@ -7,49 +7,48 @@ on:
 
 jobs:
   CI:
-    name: 🧪 Build, Lint e Testes
+    name: Build, Lint e Testes
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout do código
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: 📦 Instalar dependências
+      - name: Instalar dependências
         run: npm ci
 
-      - name: 🔍 formatação do código
+      - name: Formatação do código
         run: npm run format
 
       - name: 🏗️ Build para produção
         run: npm run build -- --configuration=production
 
   CD:
-    name: 🚀 Deploy no Azure Web App
+    name: Deploy no Azure Web App
     needs: CI
     runs-on: ubuntu-latest
-    if: github.base_ref == 'main' && github.event.pull_request.merged == true
 
     steps:
-      - name: ⬇️ Checkout do código
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
 
-      - name: 📦 Instalar dependências
+      - name: Instalar dependências
         run: npm ci
 
-      - name: 🏗️ Build do projeto
+      - name: Build do projeto
         run: npm run build -- --configuration=production
 
-      - name: 🚀 Deploy para Azure Web App
+      - name: Deploy para Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ps4us-app           
