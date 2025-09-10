@@ -1,0 +1,61 @@
+{
+  "machineTypes": [
+    {
+      "id": "1",
+      "code": "PM",
+      "description": "Máquina de Papel",
+      "flowSeq": 1,
+      "isActive": true,
+      "createdBy": "ademir.pereira@paperolutions.com.br",
+      "changedBy": "suporte.paper@papeersolutions.com.br",
+      "createdOn": "2025-09-01 10:03:00",
+      "changedOn": "2025-09-09T13:31:35.829Z",
+      "capacityFlag": false,
+      "basicSpecFlag": true,
+      "loadFlag": true,
+      "cutterFlag": false,
+      "productFlag": true,
+      "costFlag": true,
+      "additionalFlag": false,
+      "descriptionlFlag": true
+    },
+    {
+      "id": "50bb",
+      "code": "WR",
+      "description": "EMBALADEIRA dcdc",
+      "flowSeq": 1,
+      "isActive": true,
+      "capacityFlag": true,
+      "basicSpecFlag": false,
+      "loadFlag": false,
+      "cutterFlag": false,
+      "costFlag": false,
+      "productFlag": true,
+      "additionalFlag": false,
+      "descriptionFlag": true,
+      "createdBy": "suporte.paper@papeersolutions.com.br",
+      "changedBy": "suporte.paper@papeersolutions.com.br",
+      "createdOn": "2025-09-09T13:32:07.745Z",
+      "changedOn": "2025-09-09T14:49:37.019Z"
+    },
+    {
+      "id": "cd35",
+      "code": "J1",
+      "description": "Jumbo",
+      "flowSeq": 1,
+      "isActive": true,
+      "capacityFlag": true,
+      "basicSpecFlag": true,
+      "loadFlag": true,
+      "cutterFlag": false,
+      "costFlag": false,
+      "productFlag": false,
+      "additionalFlag": false,
+      "descriptionFlag": true,
+      "createdBy": "suporte.paper@papeersolutions.com.br",
+      "changedBy": "suporte.paper@papeersolutions.com.br",
+      "createdOn": "2025-09-09T16:38:58.261Z",
+      "changedOn": "2025-09-09T16:38:58.261Z"
+    }
+  ]
+}

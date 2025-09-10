@@ -1,0 +1,9 @@
+<p-toast />
+<app-pstoolbar #toolbar [selectedItems]="selectedItems" [onDelete]="deleteSelectedMachineTypes.bind(this)"
+    [onAdd]="openNew.bind(this)" [onFilter]="onGlobalFilter.bind(this)" [title]="title" />
+
+<app-psgrid [data]="machineTypes" [columns]="cols" [exportItems]="exportItems" (edit)="onEdit($event)"
+    (delete)="onDelete($event)" (selectionChange)="selectedItems.set($event)" />
+
+<app-machine-type-dialog #dialog (onSave)="saveMachineType($event)" (onCancel)="hideDialog()" />
+<p-confirmdialog [style]="{ width: '450px' }" />

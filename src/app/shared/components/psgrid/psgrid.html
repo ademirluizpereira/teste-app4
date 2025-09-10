@@ -1,0 +1,91 @@
+<p-table
+  #dt
+  [value]="data()"
+  [rows]="10"
+  [columns]="columns"
+  [paginator]="true"
+  [tableStyle]="{ 'min-width': '75rem' }"
+  [(selection)]="selectedItems"
+  [rowHover]="true"
+  class="rounded-table"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 20, 30]"
+  (selectionChange)="onSelectionChange($event)"
+  
+>
+  <ng-template #caption>
+    <div class="flex items-center justify-between">
+      <p-button
+        label="Limpar Filtros"
+        [outlined]="true"
+        severity="secondary"
+        icon="pi pi-filter-slash"
+        (click)="clearFilters(dt)"
+      />
+      <p-iconfield class="ml-auto"></p-iconfield>
+      <p-splitbutton class="btn-grey"
+        label="Exportar"
+        [model]="exportItems"
+      />
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th style="width: 3rem">Ações</th>
+
+      <th style="width: 3rem">
+        <p-tableHeaderCheckbox />
+      </th>
+
+      @for (col of columns; track col.field) {
+        <th [style.white-space]="'nowrap'">
+          <div class="flex items-center justify-between">
+            {{ col.header }}
+            <p-columnFilter [field]="col.field" [type]="col.type" display="menu" />
+          </div>
+        </th>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-row let-columns="columns">
+    <tr>
+      <td>
+        <p-menu #menu [popup]="true" [model]="getMenuItems(row)" appendTo="body"></p-menu>
+        <button
+          class="layout-menu-button layout-topbar-action"
+          (click)="menu.toggle($event)"
+        >
+          <i class="pi pi-ellipsis-v"></i>
+        </button>
+      </td>
+
+      <td style="width: 3rem">
+        <p-tableCheckbox [value]="row" />
+      </td>
+
+      @for (col of columns; track col.field) {
+  <td class="text-center" [style.white-space]="'nowrap'">
+    @switch(col.type) {
+      @case('boolean') {
+        <i
+          class="pi"
+          [ngClass]="{
+            'text-green-500 pi-check': row[col.field],
+            'text-red-500 pi-times': !row[col.field]
+          }"
+        ></i>
+      }
+      @case('date') {
+        {{ row[col.field] | date: 'dd/MM/yyyy HH:mm' }}
+      }
+      @default {
+        {{ row[col.field] }}
+      }
+    }
+  </td>
+}
+    </tr>
+  </ng-template>
+</p-table>

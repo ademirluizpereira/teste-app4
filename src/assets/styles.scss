@@ -1,0 +1,50 @@
+@use './tailwind.css';
+@use './layout/layout.scss';
+@use 'primeicons/primeicons.css';
+@use './preset/preset.scss';
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.p-button.btn-blue {
+  background-color: #3B82F6 !important;
+  border-color: #3B82F6 !important;
+  color: #fff !important;
+}
+
+.p-button.btn-blue:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.p-button.btn-red {
+  background-color: #EF4444 !important;
+  border-color: #EF4444 !important;
+  color: #fff !important;
+}
+
+.p-button.btn-red:disabled {
+  background-color: #D9D9D9 !important;
+  border-color: #D9D9D9 !important;
+  color: #666 !important;
+}
+
+.p-button.btn-grey {
+  background-color: white !important;
+  border-color: #CBD5E1 !important;
+  color: #64748B !important;
+}
+
+// exportar
+.p-splitbutton.btn-grey > .p-button {
+  background-color: white !important;
+  border-color: #CBD5E1 !important;
+  color: #64748B !important;
+}
+
+// azul quando checkbox selecionado
+.p-checkbox.p-highlight .p-checkbox-box {
+  background-color: #3B82F6 !important;
+  border-color: #3B82F6 !important;
+}
